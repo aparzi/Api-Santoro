@@ -1,12 +1,10 @@
 <?php
 $app->get('/news', function ($request, $response, $args) {
   header('Content-Type: application/json');
-  require_once './storage/DBproperties.php';
   $db = new DBproprierties();
   $conn = $db->getConnection();
-
+  // statement
   $sql = "SELECT * FROM News";
-
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) == 0) {
