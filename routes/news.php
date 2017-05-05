@@ -1,5 +1,6 @@
 <?php
 $app->get('/news', function ($request, $response, $args) {
+  header('Content-Type: application/json');
   require_once './storage/DBproperties.php';
   $db = new DBproprierties();
   $conn = $db->getConnection();
@@ -11,8 +12,10 @@ $app->get('/news', function ($request, $response, $args) {
   if (mysqli_num_rows($result) == 0) {
       $response->getBody()->write("Non ci sono news");
   } else {
+      $news = array();
       while ($row = mysqli_fetch_assoc($result)) {
-          echo json_encode($row);
+          $news[] = $row;
       }
+      print json_encode($news);
   }
 });
