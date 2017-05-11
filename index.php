@@ -1,4 +1,6 @@
 <?php
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 require ('vendor/autoload.php');
 require ('storage/DBproperties.php');
 // Create and configure Slim app
@@ -13,6 +15,7 @@ $app = new \Slim\App($config);
 require ('./routes/home.php');
 require ('./routes/news.php');
 require ('./routes/orari.php');
+require ('./routes/fermate.php');
 
 $app->run();
 ?>
